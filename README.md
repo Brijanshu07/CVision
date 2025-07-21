@@ -75,22 +75,6 @@ CVision is a smart resume analysis and feedback platform powered by AI. It helps
 
 ---
 
-## How It Works
-
-- **Home Page:**  
-  Displays all uploaded resumes with scores and feedback.  
-  ![Home Page Screenshot](docs/home.png)
-
-- **Upload Resume:**  
-  User fills job details and uploads resume.  
-  ![Upload Screenshot](docs/upload.png)
-
-- **Resume Review:**  
-  Detailed feedback, ATS score, and improvement tips.  
-  ![Review Screenshot](docs/review.png)
-
----
-
 ## Getting Started
 
 1. Clone the repository.
