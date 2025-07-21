@@ -3,20 +3,22 @@ import { useLocation, useNavigate } from 'react-router';
 import { usePuterStore } from '~/lib/puter'
 export const meta = () => ([
    { title: 'CVision | Auth'},
+   { rel: "icon", href: "/favicon.ico" },
     {
         name: 'description', content: 'Log into Your account'
     },
+    
 ])
 const auth = () => {
     // const [first, setfirst] = useState(second)
     const { isLoading, auth } = usePuterStore();
     const location = useLocation();
     const next = location.search.split('next=')[1];
-    console.log(next)
+    
 
     const navigate = useNavigate();
     useEffect(()=> {
-        if(auth.isAuthenticated) navigate(next);
+        if(auth.isAuthenticated) navigate(next) || '/';
 
     },[auth.isAuthenticated, next])
 

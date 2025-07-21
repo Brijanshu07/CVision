@@ -1,87 +1,123 @@
-# Welcome to React Router!
+# CVision
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
-
-## Features
-
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
-
-## Getting Started
-
-### Installation
-
-Install the dependencies:
-
-```bash
-npm install
-```
-
-### Development
-
-Start the development server with HMR:
-
-```bash
-npm run dev
-```
-
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+CVision is a smart resume analysis and feedback platform powered by AI. It helps job seekers improve their resumes by providing actionable feedback, ATS (Applicant Tracking System) scores, and detailed suggestions for enhancement.
 
 ---
 
-Built with ❤️ using React Router.
+## Features
+
+- **Resume Upload:** Easily upload your resume in PDF format.
+- **AI-Powered Feedback:** Get detailed feedback on tone, style, content, structure, and skills.
+- **ATS Score:** See how well your resume performs against Applicant Tracking Systems.
+- **Score Badges & Gauges:** Visual indicators for resume strength.
+- **Resume Gallery:** Track and review all your uploaded resumes.
+- **Authentication:** Secure login/logout for personalized experience.
+- **Data Storage:** Resumes and feedback are securely stored and retrievable.
+
+---
+
+## Usage
+
+1. **Sign In:** Log in to your account to access personalized features.
+2. **Upload Resume:** Go to the upload page and submit your resume along with job details.
+3. **Get Feedback:** Receive instant AI-powered feedback and ATS score.
+4. **Review Submissions:** Track all your resumes and feedback on the home page.
+5. **Improve:** Apply suggestions to enhance your resume and re-upload for better scores.
+
+---
+
+## Use Cases
+
+- **Job Seekers:** Improve resume quality and increase chances of passing ATS filters.
+- **Students:** Get guidance on resume writing for internships and jobs.
+- **Career Coaches:** Use feedback to help clients optimize their resumes.
+- **Recruiters:** Evaluate candidate resumes for ATS compatibility.
+
+---
+
+## Data Flow
+
+1. **User Authentication:**
+
+   - User logs in via `/auth` route.
+   - Auth state managed globally.
+
+2. **Resume Upload:**
+
+   - User uploads PDF via `/upload`.
+   - PDF is converted to image for preview.
+   - Resume and job details are stored in KV storage.
+
+3. **AI Feedback:**
+
+   - Resume is sent to AI for analysis.
+   - Feedback is parsed and stored.
+
+4. **Resume Review:**
+
+   - Home page (`/`) lists all resumes.
+   - Each resume links to `/resume/:id` for detailed feedback.
+
+5. **Feedback Display:**
+   - Summary, ATS score, and detailed tips shown using custom components.
+
+---
+
+## Routes Overview
+
+| Route         | Purpose                                 |
+| ------------- | --------------------------------------- |
+| `/`           | Home page, resume gallery & feedback    |
+| `/auth`       | Login/Logout authentication             |
+| `/upload`     | Upload new resume and job details       |
+| `/resume/:id` | Detailed feedback for a specific resume |
+| `/wipe`       | Wipe all stored data (admin/debug)      |
+
+---
+
+## How It Works
+
+- **Home Page:**  
+  Displays all uploaded resumes with scores and feedback.  
+  ![Home Page Screenshot](docs/home.png)
+
+- **Upload Resume:**  
+  User fills job details and uploads resume.  
+  ![Upload Screenshot](docs/upload.png)
+
+- **Resume Review:**  
+  Detailed feedback, ATS score, and improvement tips.  
+  ![Review Screenshot](docs/review.png)
+
+---
+
+## Getting Started
+
+1. Clone the repository.
+2. Install dependencies:  
+   `npm install`
+3. Start the development server:  
+   `npm run dev`
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## Technologies Used
+
+- React
+- Zustand (state management)
+- Tailwind CSS
+- Puter.js (storage, AI, auth)
+- PDF.js (PDF to image conversion)
+
+---
+
+## License
+
+MIT
+
+---
+
+## Contributing
+
+Feel free to open issues or submit pull requests for
